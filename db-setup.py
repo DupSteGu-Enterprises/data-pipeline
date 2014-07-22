@@ -8,7 +8,8 @@ import settings
 def create_database():
     """
     System calls to create postgreSQL database
-    These calls will raise errors of database already exists.
+
+    These calls will raise errors if database already exists.
     That's okay, ignore them and move on.
     """
     call(["createuser", "dupstegu"])
