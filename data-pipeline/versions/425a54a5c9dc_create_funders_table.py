@@ -1,14 +1,14 @@
-"""create politician table
+"""Create funders table
 
-Revision ID: 3fce8157f88
-Revises: None
-Create Date: 2014-07-21 20:35:59.570082
+Revision ID: 425a54a5c9dc
+Revises: 3fce8157f88
+Create Date: 2014-07-23 23:55:33.549580
 
 """
 
 # revision identifiers, used by Alembic.
-revision = '3fce8157f88'
-down_revision = None
+revision = '425a54a5c9dc'
+down_revision = '3fce8157f88'
 
 from alembic import op
 import sqlalchemy as sa
@@ -16,10 +16,10 @@ import sqlalchemy as sa
 
 def upgrade():
     op.create_table(
-        'politicians',
+        'funders',
         sa.Column('id', sa.Integer, primary_key=True),
         sa.Column('name', sa.String, nullable=False),
     )
 
 def downgrade():
-    op.drop_table('politicians')
+    op.drop_table('funders')
