@@ -3,7 +3,7 @@
 from sqlalchemy.engine.url import URL
 from subprocess import call
 import fileinput
-import settings
+from config import settings
 
 def create_database():
     """
