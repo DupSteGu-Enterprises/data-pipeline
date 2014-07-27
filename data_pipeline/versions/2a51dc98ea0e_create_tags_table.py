@@ -12,16 +12,16 @@ down_revision = '425a54a5c9dc'
 
 from alembic import op
 import sqlalchemy as sa
-from settings import db_settings
+from settings import db_settings as db
 
 
 def upgrade():
     op.create_table(
-        'tags',
+        db.TAGS_TABLE,
         sa.Column('id', sa.Integer, primary_key=True),
         sa.Column('title', sa.String, nullable=False),
     )
 
 
 def downgrade():
-    op.drop_table('tags')
+    op.drop_table(db.TAGS_TABLE)

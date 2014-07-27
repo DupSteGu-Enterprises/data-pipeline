@@ -12,15 +12,16 @@ down_revision = '37a9a8d81a29'
 
 from alembic import op
 import sqlalchemy as sa
+from settings import db_settings as db
 
 
 def upgrade():
     op.create_table(
-        'funder_tags',
+        db.FUNDER_TAGS_TABLE,
         sa.Column('funder_id', sa.Integer, sa.ForeignKey('funders.id')),
         sa.Column('tag_id', sa.Integer, sa.ForeignKey('tags.id')),
     )
 
 
 def downgrade():
-    op.drop_table('funder_tags')
+    op.drop_table(db.FUNDER_TAGS_TABLE)
