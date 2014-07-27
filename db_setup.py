@@ -3,7 +3,7 @@
 from sqlalchemy.engine.url import URL
 from subprocess import call
 import fileinput
-from config import settings
+from config.settings import db_settings
 
 def create_database():
     """
@@ -19,7 +19,7 @@ def config_alembic_ini_file():
     """Configure our database in the alembic.ini file"""
     for line in fileinput.input("alembic.ini", inplace=True):
         if("sqlalchemy.url" in line):
-            print "sqlalchemy.url = %s\n" %(URL(**settings.DATABASE)),
+            print "sqlalchemy.url = %s\n" %(URL(**db_settings.DATABASE)),
         else:
             print line,
 
