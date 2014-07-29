@@ -22,5 +22,6 @@ def upgrade():
         sa.Column('name', sa.String, nullable=False),
     )
 
+
 def downgrade():
     op.drop_table(db.FUNDER_TABLE)

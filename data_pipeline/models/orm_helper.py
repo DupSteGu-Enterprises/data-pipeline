@@ -11,6 +11,7 @@ def create_connection():
     """ Creates and returns a connection to the database """
     return create_engine(URL(**db_settings.DATABASE))
 
+
 def create_session(engine):
     """ Creates and returns a session with the database. """
     return sessionmaker(bind=engine)()

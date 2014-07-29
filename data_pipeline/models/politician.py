@@ -10,7 +10,7 @@ Base = get_model_base()
 
 class Politician(Base):
     """ Defines the Politician model """
-    __tablename__= db_settings.POLITICIAN_TABLE
+    __tablename__ = db_settings.POLITICIAN_TABLE
 
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)

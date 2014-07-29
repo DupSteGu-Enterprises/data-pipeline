@@ -5,6 +5,7 @@ from subprocess import call
 import fileinput
 from config.settings import db_settings
 
+
 def create_database():
     """
     System calls to create postgreSQL database
@@ -15,11 +16,12 @@ def create_database():
     call(["createuser", "dupstegu"])
     call(["createdb", "-Odupstegu", "-Eutf8", "dupstegu"])
 
+
 def config_alembic_ini_file():
     """Configure our database in the alembic.ini file"""
     for line in fileinput.input("alembic.ini", inplace=True):
         if("sqlalchemy.url" in line):
-            print "sqlalchemy.url = %s\n" %(URL(**db_settings.DATABASE)),
+            print "sqlalchemy.url = %s\n" % (URL(**db_settings.DATABASE)),
         else:
             print line,
 
