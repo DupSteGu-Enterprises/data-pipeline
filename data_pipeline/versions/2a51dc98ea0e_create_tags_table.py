@@ -17,11 +17,11 @@ from settings import db_settings as db
 
 def upgrade():
     op.create_table(
-        db.TAGS_TABLE,
+        db.TAG_TABLE,
         sa.Column('id', sa.Integer, primary_key=True),
         sa.Column('title', sa.String, nullable=False),
     )
 
 
 def downgrade():
-    op.drop_table(db.TAGS_TABLE)
+    op.drop_table(db.TAG_TABLE)

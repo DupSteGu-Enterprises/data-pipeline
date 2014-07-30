@@ -1,4 +1,6 @@
-# Superclass for all of our models
+"""
+Superclass for all of our models
+"""
 
 from sqlalchemy.ext.declarative import declarative_base
 

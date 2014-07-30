@@ -1,11 +1,13 @@
-# Model for a politician table entry
+"""
+Model for a politician table entry
+"""
 
-from base import ModelBase, get_model_base
+from base import get_model_base
 from settings import db_settings
 from sqlalchemy import Column, Integer, String
 
 
-Base = get_model_base()
+Base = get_model_base()  # Grab the declarative model base to inherit from
 
 
 class Politician(Base):
@@ -17,8 +19,6 @@ class Politician(Base):
 
     def __str__(self):
         """
-        Returns a string representation of the politician.
-
-        Useful for testing.
+        Returns a string representation of a politician object
         """
         return "Politician #{id}: {name}".format(id=self.id, name=self.name)

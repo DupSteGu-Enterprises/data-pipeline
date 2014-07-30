@@ -1,5 +1,7 @@
-# A collection of helper functions for use when interacting with the database
-# through SQLAlchemy
+"""
+A collection of helper functions for use when interacting with the database
+through SQLAlchemy
+"""
 
 from sqlalchemy.engine.url import URL
 from sqlalchemy.orm import sessionmaker
@@ -7,7 +9,7 @@ from settings import db_settings
 from sqlalchemy import create_engine
 
 
-def create_connection():
+def create_dbconnection():
     """ Creates and returns a connection to the database """
     return create_engine(URL(**db_settings.DATABASE))
 

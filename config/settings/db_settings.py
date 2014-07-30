@@ -10,7 +10,7 @@ DATABASE = {'drivername': 'postgres',
 
 # The names of various database tables
 POLITICIAN_TABLE = 'politicians'
-TAGS_TABLE = 'tags'
+TAG_TABLE = 'tags'
 FUNDER_TABLE = 'funders'
 POLITICIAN_FUNDERS_TABLE = 'politician_funders'
 FUNDER_TAGS_TABLE = 'funder_tags'
