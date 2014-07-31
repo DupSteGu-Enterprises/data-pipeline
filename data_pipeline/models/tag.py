@@ -8,6 +8,7 @@ from sqlalchemy import Column, Integer, String
 
 Base = get_model_base()  # Grab the declarative model base to inherit from
 
+
 class Tag(Base):
     """ Defines the Tag ORM object """
     __tablename__ = db_settings.TAG_TABLE

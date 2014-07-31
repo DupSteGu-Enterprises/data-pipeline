@@ -1,7 +1,7 @@
 # Some Global Application Settings
 
 # Components of path to the local database
-DATABASE = {'drivername': 'postgres',
+DATABASE = {'drivername': 'postgresql',
             'host': 'localhost',
             'port': '5432',
             'username': 'dupstegu',
@@ -14,3 +14,12 @@ TAG_TABLE = 'tags'
 FUNDER_TABLE = 'funders'
 POLITICIAN_FUNDERS_TABLE = 'politician_funders'
 FUNDER_TAGS_TABLE = 'funder_tags'
+
+# list of all existing database tables
+TABLE_LIST = [
+    POLITICIAN_TABLE,
+    TAG_TABLE,
+    FUNDER_TABLE,
+    POLITICIAN_FUNDERS_TABLE,
+    FUNDER_TAGS_TABLE,
+]
