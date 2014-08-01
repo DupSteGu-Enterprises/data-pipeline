@@ -15,4 +15,7 @@ the proper configuration files.
 
 TODO
 ----
-Write script that sets up virtualenv for development automatically 
+Setup separate database for testing
+Link pg-start command with virtual environment startup, and pg-stop with virtualenv deactivation 
+Write query interface layer 
+Merge in data fetch layer 
