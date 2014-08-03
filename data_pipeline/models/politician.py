@@ -3,14 +3,19 @@ Model for a politician table entry
 """
 
 from settings import db_settings
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Table, Column, Integer, String, ForeignKey
+from sqlalchemy.orm import relationship
 from sqlalchemy.orm.exc import MultipleResultsFound, NoResultFound
 from .orm_helper import create_session, create_dbconnection
-from .base import get_model_base
+from models import Base
+from .funder import Funder
 
 
-Base = get_model_base()  # Grab the declarative model base to inherit from
 Session = create_session(create_dbconnection()) # Used only for querying
+politician_funders_table = Table(db_settings.POLITICIAN_FUNDERS_TABLE, Base.metadata,
+    Column('politician_id', Integer, ForeignKey('politicians.id')),
+    Column('funder_id', Integer, ForeignKey('funders.id')),
+)
 
 
 class Politician(Base):
@@ -19,6 +24,11 @@ class Politician(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
+
+    # many to many Politician <-> Funder
+    funders = relationship(Funder,
+                            secondary=politician_funders_table,
+                            backref='politicians')
 
     def __str__(self):
         """

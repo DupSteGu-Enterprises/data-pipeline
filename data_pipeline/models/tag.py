@@ -2,11 +2,9 @@
 Model definition for a tag
 """
 
-from base import get_model_base
+from models import Base
 from settings import db_settings
 from sqlalchemy import Column, Integer, String
-
-Base = get_model_base()  # Grab the declarative model base to inherit from
 
 
 class Tag(Base):

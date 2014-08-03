@@ -9,10 +9,6 @@ from .orm_helper import create_dbconnection, create_session
 # handle that using exposed session transactions
 Session = create_session(create_dbconnection())
 
-def get_model_base():
-    """ Returns a base object to be used in defining other models """
-    return declarative_base(cls=ModelBase)
-
 
 class ModelBase(object):
     """
