@@ -2,7 +2,9 @@
 Interface for creating models and storing them into the database.
 """
 
-from models import Politician, Tag, Funder
+from models.politician import Politician
+from models.tag import Tag
+from models.funder import Funder
 from models.orm_helper import *
 
 
