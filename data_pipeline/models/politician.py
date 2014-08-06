@@ -29,6 +29,16 @@ class Politician(Base):
     funders = relationship(Funder,
                             secondary=politician_funders_table,
                             backref='politicians')
+    
+    def __init__(self, information_dict=None):
+        """ 
+        Init can be called with no arguments, or a dict of
+        information to be set right at object creation.
+        """
+        if information_dict is not None:
+            super(Politician, self).__init__(**information_dict)
+        else:
+            super(Politician, self).__init__()
 
     def __str__(self):
         """
@@ -42,7 +52,7 @@ class Politician(Base):
         Queries the database for politicians with a matching name as given.
 
         If only one politician has the given name, only that politician is
-        returns. If more than one politician shares the given name, an array
+        returned. If more than one politician shares the given name, an array
         of those politicians is returned.
         Returns none if no match found.
         """

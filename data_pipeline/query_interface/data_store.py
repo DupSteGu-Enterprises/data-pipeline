@@ -21,27 +21,30 @@ def store_politician(politician_data):
 
     Returns True if the politician has been successfully added to the database.
     """
-    # Replace the list of funder contributions tuples with funder objects
+    # Replace the list of funder contribution dicts with funder objects
     politician_data['funders'] = map(extract_funders, politician_data['funders'])
 
-    to_save = Politician(**politician_data) 
-    # TODO: get rid of the exposed derefencing here, not very pythonic...
+    to_save = Politician(politician_data) 
+    
     db_session.add(to_save)
     db_session.commit()
     return True
 
 def extract_funders(funder_information):
     """
-    Given a tuple of funder information, returns a funder object for that info.
-    NOTE: I think these should instead be dicts of the funder information... 
+    Given a dict of funder information, returns a funder object for that info.
+    NOTE: I think these should be dicts of the funder information, not tuples... 
     I'm going to continue assuming that its a dict instead
 
     First checks the database for an already existing entry and returns it if 
     one exists. Otherwise, creates a new db entry for the funder and stores it
     in the database.
-    """
-    # TODO: Add check if this funder already exists in database...
-    new_funder = Funder(**funder_information)
-    db_session.add(new_funder)
-    db_session.commit()
-    return new_funder
+    """ 
+    existing_funder = Funder.get_by_name(funder_information["name"])
+    if existing_funder is not None:
+        return existing_funder
+    else:
+        new_funder = Funder(funder_information)
+        db_session.add(new_funder)
+        db_session.commit()
+        return new_funder
