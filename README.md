@@ -15,7 +15,6 @@ the proper configuration files.
 
 TODO
 ----
-- Setup separate database for testing
-- Link pg-start command with virtual environment startup, and pg-stop with virtualenv deactivation
+- Setup separate database for testing !IMPORTANT: This needs to happen so tests consistently work!
 - Write query interface layer
 - Merge in data fetch layer 
