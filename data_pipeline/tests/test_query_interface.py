@@ -14,13 +14,13 @@ class PoliticianDataStorageTests(unittest.TestCase):
 
     def test_storing_politician(self):
         """ Tests storing a single politician into the db """
-        data = {"name": "Marco Rubio", "funders": None}
+        data = {"name": "Bill Nelson"}
         #to_store = Politician(**data)
         successful = store_politician(data)
         self.assertTrue(successful)
 
         # Should now be able to find the politician in the db
-        result = Politician.get_by_name("Marco Rubio")
+        result = Politician.get_by_name("Bill Nelson")
         self.assertIsNotNone(result)
         # Only one should exist, politician object should be returned
         self.assertTrue(isinstance(result, Politician))

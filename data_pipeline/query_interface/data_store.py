@@ -22,7 +22,8 @@ def store_politician(politician_data):
     Returns True if the politician has been successfully added to the database.
     """
     # Replace the list of funder contribution dicts with funder objects
-    politician_data['funders'] = map(extract_funders, politician_data['funders'])
+    if 'funders' in politician_data:
+        politician_data['funders'] = map(extract_funders, politician_data['funders'])
 
     to_save = Politician(politician_data) 
     

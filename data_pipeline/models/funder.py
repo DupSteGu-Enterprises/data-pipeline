@@ -5,7 +5,7 @@ Model for a funder table entry
 from models import Base
 from settings import db_settings
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm.exc import MultipleResultsFound, NoResultsFound
+from sqlalchemy.orm.exc import MultipleResultsFound, NoResultFound
 from .orm_helper import create_session, create_dbconnection
 
 
