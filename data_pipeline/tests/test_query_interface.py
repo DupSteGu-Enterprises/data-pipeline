@@ -13,7 +13,7 @@ class PoliticianDataStorageTests(unittest.TestCase):
         pass
 
     def test_storing_politician(self):
-        """ Tests storing a single politician into the db """
+        """ Test storing a single politician into the db """
         data = {"name": "Bill Nelson"}
         #to_store = Politician(**data)
         successful = store_politician(data)

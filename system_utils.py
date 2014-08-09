@@ -53,7 +53,7 @@ def run_tests():
     TODO: Configure this to be able to run specific tests
     """
     print 'Running tests...\n'
-    call(['nosetests'])
+    call(['nosetests', '--rednose', '--verbose'])
 
 def main(argv):
     if len(argv) < 2:
