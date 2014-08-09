@@ -4,9 +4,9 @@
 DATABASE = {'drivername': 'postgresql',
             'host': 'localhost',
             'port': '5432',
-            'username': 'dupstegu',
+            'username': 'dupstegu_test',
             'password': 'root',
-            'database': 'dupstegu'}
+            'database': 'dupstegu_test'}
 
 # The names of various database tables
 POLITICIAN_TABLE = 'politicians'

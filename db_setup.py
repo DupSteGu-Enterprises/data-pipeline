@@ -4,6 +4,7 @@ from sqlalchemy.engine.url import URL
 from subprocess import call
 import fileinput
 from config.settings import db_settings
+import sys
 
 
 def create_database():
@@ -26,5 +27,10 @@ def config_alembic_ini_file():
             print line,
 
 if __name__ == "__main__":
-    create_database()
+    createdb = True
+    if len(sys.argv) > 1:
+        if sys.argv[1] == '--skip-createdb':
+            createdb = False
+    if createdb:
+        create_database()
     config_alembic_ini_file()
