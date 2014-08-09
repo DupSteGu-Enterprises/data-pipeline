@@ -8,6 +8,13 @@ DATABASE = {'drivername': 'postgresql',
             'password': 'root',
             'database': 'dupstegu'}
 
+TEST_DATABASE = {'drivername': 'postgresql',
+                 'host': 'localhost',
+                 'port': '5432',
+                 'username': 'dupstegu_test',
+                 'password': 'root',
+                 'database': 'dupstegu_test'}
+
 # The names of various database tables
 POLITICIAN_TABLE = 'politicians'
 TAG_TABLE = 'tags'

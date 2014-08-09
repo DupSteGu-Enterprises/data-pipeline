@@ -26,7 +26,6 @@ def store_politician(politician_data):
         politician_data['funders'] = map(extract_funders, politician_data['funders'])
 
     to_save = Politician(politician_data) 
-    
     db_session.add(to_save)
     db_session.commit()
     return True
@@ -34,7 +33,7 @@ def store_politician(politician_data):
 def extract_funders(funder_information):
     """
     Given a dict of funder information, returns a funder object for that info.
-    NOTE: I think these should be dicts of the funder information, not tuples... 
+    NOTE: I think these should be dicts of the funder information, not tuples..
     I'm going to continue assuming that its a dict instead
 
     First checks the database for an already existing entry and returns it if 
