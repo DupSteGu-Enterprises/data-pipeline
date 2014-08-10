@@ -3,7 +3,7 @@ Superclass for all of our models
 """
 
 from sqlalchemy.ext.declarative import declarative_base
-from .orm_helper import create_dbconnection, create_session
+from orm_helper import create_dbconnection, create_session
 
 # Session used for querying. Don't use for altering the database, we want to
 # handle that using exposed session transactions

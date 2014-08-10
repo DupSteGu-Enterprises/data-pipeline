@@ -6,9 +6,9 @@ from settings import db_settings
 from sqlalchemy import Table, Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm.exc import MultipleResultsFound, NoResultFound
-from .orm_helper import create_session, create_dbconnection
+from orm_helper import create_session, create_dbconnection
 from models import Base
-from .funder import Funder
+from funder import Funder
 
 
 Session = create_session(create_dbconnection()) # Used only for querying
