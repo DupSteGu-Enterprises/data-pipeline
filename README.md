@@ -7,6 +7,13 @@ Setup
 -----
 To set things up locally for development, refer to [this doc](https://docs.google.com/a/stanford.edu/document/d/1emM6B799iaysc8qCyycbOdt5ElYjxE2T8f4o9J_Py2g)
 
+Tests
+-----
+To run tests, simply type `python system_utils.py test` from the project home directory. 
+This will create a temporary testing database, run the entire test suite, and then 
+destory the test database and restore the project back to the original development
+state.
+
 NOTE
 ====
 In order for this project to run correctly, the PYTHONPATH must be correctly configured.
@@ -15,6 +22,6 @@ the proper configuration files.
 
 TODO
 ----
-- Setup separate database for testing !IMPORTANT: This needs to happen so tests consistently work!
 - Write query interface layer
-- Merge in data fetch layer 
+- Merge in data fetch layer
+- Start building calculation API
