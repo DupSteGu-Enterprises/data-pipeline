@@ -1,6 +1,6 @@
-# Appliaction settings used for testing
+# Application settings for configuring the database
 
-# Test database configuration
+# Database info for generating the db url
 DATABASE = {'drivername': 'postgresql',
             'host': 'localhost',
             'port': '5432',

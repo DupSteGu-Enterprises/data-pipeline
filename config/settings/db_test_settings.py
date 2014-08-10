@@ -1,4 +1,4 @@
-# Appliaction settings used for testing
+# Application settings used for testing
 
 # Test database configuration
 DATABASE = {'drivername': 'postgresql',
