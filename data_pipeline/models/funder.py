@@ -3,13 +3,11 @@ Model for a funder table entry
 """
 
 from models import Base
+from session import Session
 from settings import db_settings
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm.exc import MultipleResultsFound, NoResultFound
 from orm_helper import create_session, create_dbconnection
-
-
-Session = create_session(create_dbconnection())
 
 
 class Funder(Base):
@@ -53,14 +51,3 @@ class Funder(Base):
             return query.all()
         except NoResultFound:
             return None
-
-
-
-
-
-
-
-
-
-
-

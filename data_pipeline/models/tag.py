@@ -5,6 +5,7 @@ Model definition for a tag
 from models import Base
 from settings import db_settings
 from sqlalchemy import Column, Integer, String
+from session import Session
 
 
 class Tag(Base):

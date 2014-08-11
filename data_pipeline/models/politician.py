@@ -8,10 +8,10 @@ from sqlalchemy.orm import relationship
 from sqlalchemy.orm.exc import MultipleResultsFound, NoResultFound
 from orm_helper import create_session, create_dbconnection
 from models import Base
+from session import Session
 from funder import Funder
 
 
-Session = create_session(create_dbconnection()) # Used only for querying
 politician_funders_table = Table(db_settings.POLITICIAN_FUNDERS_TABLE, Base.metadata,
     Column('politician_id', Integer, ForeignKey('politicians.id')),
     Column('funder_id', Integer, ForeignKey('funders.id')),
@@ -26,12 +26,11 @@ class Politician(Base):
     name = Column(String, nullable=False)
 
     # many to many Politician <-> Funder
-    funders = relationship(Funder,
-                            secondary=politician_funders_table,
+    funders = relationship(Funder, secondary=politician_funders_table, 
                             backref='politicians')
-    
+
     def __init__(self, information_dict=None):
-        """ 
+        """
         Init can be called with no arguments, or a dict of
         information to be set right at object creation.
         """

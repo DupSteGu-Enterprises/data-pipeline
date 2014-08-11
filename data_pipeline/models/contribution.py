@@ -6,12 +6,14 @@ politicians and funders may have many contributions.
 """
 
 from models import Base
+from session import Session
 from settings import db_settings
 from sqlalchemy import Column, Integer, Date, ForeignKey
 from sqlalchemy.orm import relationship, backref
 from orm_helper import create_session, create_dbconnection
+from funder import Funder
+from politician import Politician
 
-Session = create_session(create_dbconnection())
 
 class Contribution(Base):
     """ Defines the Contribution model """
@@ -23,7 +25,7 @@ class Contribution(Base):
     funder_id = Column(Integer, ForeignKey('funders.id'))
 
     politician = relationship("Politician", backref=backref('contributions'))
-    funder = relationship("Funder", backref=backref('funders'))
+    funder = relationship("Funder", backref=backref('contributions'))
 
     def __str__(self):
         """ Returns a string representation of a contribution object """

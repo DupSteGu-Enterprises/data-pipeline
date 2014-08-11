@@ -25,3 +25,5 @@ TODO
 - Write query interface layer
 - Merge in data fetch layer
 - Start building calculation API
+- Write more tests, including tests for using models.. lots of session interaction
+going on there, can and has led to some weird behavior
