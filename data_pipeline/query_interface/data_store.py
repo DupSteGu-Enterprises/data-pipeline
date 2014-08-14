@@ -5,11 +5,11 @@ Interface for creating models and storing them into the database.
 from models.politician import Politician
 from models.tag import Tag
 from models.funder import Funder
-from models.orm_helper import create_session, create_dbconnection
+from models.contribution import Contribution
+from models.session import Session
+import datetime
 
-# TODO: Figure out if db_session should be made global here, or a new one made
-# for each transaction.
-db_session = create_session(create_dbconnection())
+DATE_FORMAT = '%m/%d/%y'
 
 def store_politician(politician_data):
     """
@@ -17,34 +17,47 @@ def store_politician(politician_data):
 
     The passed in dict is assumed to contain the following fields:
     name, the name of the politician
-    funders, an array of names of the politician's funders
+    funders, an array of dicts representing contributions made by a
+    politician's funders
 
     Returns True if the politician has been successfully added to the database.
-    """
-    # Replace the list of funder contribution dicts with funder objects
-    if 'funders' in politician_data:
-        politician_data['funders'] = map(extract_funders, politician_data['funders'])
 
-    to_save = Politician(politician_data) 
-    db_session.add(to_save)
-    db_session.commit()
+    TODO: Check if we've already encountered this politician - then how do we 
+    respond? Assume we have new contributions/funders to add to its list?
+    Also need to add validations
+    """
+    new_politician = Politician({'name': politician_data['name']})
+    if 'contributions' in politician_data:
+        for contribution in politician_data['contributions']:
+            set_contribution(contribution, new_politician)
+    Session.add(new_politician)
+    Session.commit()
     return True
 
-def extract_funders(funder_information):
+def set_contribution(contribution_info, politician):
     """
-    Given a dict of funder information, returns a funder object for that info.
-    NOTE: I think these should be dicts of the funder information, not tuples..
-    I'm going to continue assuming that its a dict instead
+    Given a dict of contribution information, returns a contribution object
+    created from that information.
 
-    First checks the database for an already existing entry and returns it if 
-    one exists. Otherwise, creates a new db entry for the funder and stores it
-    in the database.
-    """ 
-    existing_funder = Funder.get_by_name(funder_information["name"])
+    Returns True if the contribution object was successfully created and added
+    to the database.
+    TODO: Add validations/checking and error handling.
+    """
+    # First create the new contribution object and set its fields
+    contribution = Contribution()
+    contribution.date = datetime.strptime(contribution_info['date'], DATE_FORMAT)
+
+    existing_funder = Funder.get_by_name(contribution_info['funder'])
     if existing_funder is not None:
-        return existing_funder
+        contribution.funder = existing_funder
     else:
-        new_funder = Funder(funder_information)
-        db_session.add(new_funder)
-        db_session.commit()
-        return new_funder
+        # This funder doesn't exist yet, so we need to create it
+        new_funder = Funder({'name': contribution_info['funder']})
+        Session.add(new_funder)
+        Session.commit()
+        contribution.funder = new_funder
+    contribution.politician = politician
+
+    Session.add(contribution)
+    Session.commit()
+    return True

@@ -33,7 +33,7 @@ def destroy_test_db():
 
 def run_migrations():
     """ Runs the alembic migrations to bring the test db up to date """
-    print 'Running migrations to update test dabatase...\n'
+    print 'Running migrations to update test database...\n'
     call(['alembic', 'upgrade', 'head'])
 
 def set_db_test_settings():
