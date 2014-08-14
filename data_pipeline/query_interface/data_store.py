@@ -7,9 +7,9 @@ from models.tag import Tag
 from models.funder import Funder
 from models.contribution import Contribution
 from models.session import Session
-import datetime
+from datetime import datetime
 
-DATE_FORMAT = '%m/%d/%y'
+DATE_FORMAT = '%m/%d/%Y'
 
 def store_politician(politician_data):
     """
@@ -47,16 +47,20 @@ def set_contribution(contribution_info, politician):
     contribution = Contribution()
     contribution.date = datetime.strptime(contribution_info['date'], DATE_FORMAT)
 
-    existing_funder = Funder.get_by_name(contribution_info['funder'])
-    if existing_funder is not None:
-        contribution.funder = existing_funder
+    funder = Funder.get_by_name(contribution_info['funder'])
+    if funder is not None:
+        contribution.funder = funder
     else:
         # This funder doesn't exist yet, so we need to create it
-        new_funder = Funder({'name': contribution_info['funder']})
-        Session.add(new_funder)
+        funder = Funder({'name': contribution_info['funder']})
+        Session.add(funder)
         Session.commit()
-        contribution.funder = new_funder
+        contribution.funder = funder
     contribution.politician = politician
+
+    # If this funder is a new one for the given politician, add it to his/her
+    # funders list
+    politician.funders.append(funder)
 
     Session.add(contribution)
     Session.commit()
