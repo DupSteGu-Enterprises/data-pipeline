@@ -14,6 +14,9 @@ class PoliticianDataStorageTests(unittest.TestCase):
     def setUp(self):
         pass
 
+    def tearDown(self):
+        """ TODO: Clear out things added to database """
+
     def test_storing_politician_no_contributions(self):
         """ Test storing a single politician into the db """
         data = {"name": "Bill Nelson"}
@@ -28,7 +31,7 @@ class PoliticianDataStorageTests(unittest.TestCase):
         self.assertTrue(isinstance(result, Politician))
 
     def test_storing_politician_one_contribution(self):
-        """ Tests storing a single politician with accompanying contribution """
+        """ Test storing a single politician with accompanying contribution """
         contributions = [{'date': '08/13/2014', 'funder': 'NRA',}]
         data = {'name': 'Marco Rubio', 'contributions': contributions}
         successful = store_politician(data)

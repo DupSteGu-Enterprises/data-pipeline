@@ -60,7 +60,8 @@ def set_contribution(contribution_info, politician):
 
     # If this funder is a new one for the given politician, add it to his/her
     # funders list
-    politician.funders.append(funder)
+    if funder not in politician.funders:
+        politician.funders.append(funder)
 
     Session.add(contribution)
     Session.commit()
