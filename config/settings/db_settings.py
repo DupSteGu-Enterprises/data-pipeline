@@ -14,6 +14,7 @@ TAG_TABLE = 'tags'
 FUNDER_TABLE = 'funders'
 POLITICIAN_FUNDERS_TABLE = 'politician_funders'
 FUNDER_TAGS_TABLE = 'funder_tags'
+CONTRIBUTION_TABLE = 'contributions'
 
 # list of all existing database tables
 TABLE_LIST = [
@@ -22,4 +23,5 @@ TABLE_LIST = [
     FUNDER_TABLE,
     POLITICIAN_FUNDERS_TABLE,
     FUNDER_TAGS_TABLE,
+    CONTRIBUTION_TABLE,
 ]

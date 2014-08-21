@@ -3,13 +3,11 @@ Model for a funder table entry
 """
 
 from models import Base
+from session import Session
 from settings import db_settings
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm.exc import MultipleResultsFound, NoResultFound
-from .orm_helper import create_session, create_dbconnection
-
-
-Session = create_session(create_dbconnection())
+from orm_helper import create_session, create_dbconnection
 
 
 class Funder(Base):
@@ -18,11 +16,11 @@ class Funder(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String, nullable=False)
-    
+
     def __init__(self, information_dict=None):
         """
         Constructor for a Funder object
-        
+
         Can be called with no arguments, creating a Funder 
         object with no attributes set, or with a dict of 
         information to be set at object creation.
@@ -53,14 +51,3 @@ class Funder(Base):
             return query.all()
         except NoResultFound:
             return None
-
-
-
-
-
-
-
-
-
-
-
