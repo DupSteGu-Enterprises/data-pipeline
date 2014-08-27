@@ -6,7 +6,6 @@ from settings import db_settings
 from sqlalchemy import Table, Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm.exc import MultipleResultsFound, NoResultFound
-from orm_helper import create_session, create_dbconnection
 from models import Base
 from session import Session
 from funder import Funder
@@ -62,3 +61,19 @@ class Politician(Base):
             return query.all()
         except NoResultFound:
             return None
+
+    @classmethod
+    def get_total_contributions_for(class_, name):
+        """
+        Finds the number of contributions made to given politician
+
+        If no politician is found with the matching name, an error is raised
+        """
+        query = Session.query(class_).filter_by(name=name)
+        try:
+            politician = query.one()
+        except NoResultFound:
+            # Pass along the exception to be handled by calling scope
+            raise NoResultFound
+
+        return len(politician.contributions)

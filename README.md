@@ -22,8 +22,11 @@ the proper configuration files.
 
 TODO
 ----
-- Write query interface layer
 - Merge in data fetch layer
 - Start building calculation API
 - Write more tests, including tests for using models.. lots of session interaction
 going on there, can and has led to some weird behavior
+- Finish implementing validations
+- Write tests for `Politician.get_toal_contributions_for(...)`, I'm worried that the
+`politician.contributions` line will break, because of circular dependencies between the
+contributions and politicians models
