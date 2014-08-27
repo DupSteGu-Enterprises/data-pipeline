@@ -27,6 +27,8 @@ TODO
 - Write more tests, including tests for using models.. lots of session interaction
 going on there, can and has led to some weird behavior
 - Finish implementing validations
-- Write tests for `Politician.get_toal_contributions_for(...)`, I'm worried that the
+- Look further into python multiple inheritance to make `Validator` as slick as
+possible
+- Write tests for `Politician.get_total_contributions_for(...)`, I'm worried that the
 `politician.contributions` line will break, because of circular dependencies between the
 contributions and politicians models

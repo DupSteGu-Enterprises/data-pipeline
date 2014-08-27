@@ -6,9 +6,11 @@ from settings import db_settings
 from sqlalchemy import Table, Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm.exc import MultipleResultsFound, NoResultFound
+
 from models import Base
 from session import Session
 from funder import Funder
+from utils.validator import Validator
 
 
 politician_funders_table = Table(db_settings.POLITICIAN_FUNDERS_TABLE, Base.metadata,
@@ -17,7 +19,7 @@ politician_funders_table = Table(db_settings.POLITICIAN_FUNDERS_TABLE, Base.meta
 )
 
 
-class Politician(Base):
+class Politician(Base, Validator):
     """ Defines the Politician model """
     __tablename__ = db_settings.POLITICIAN_TABLE
 

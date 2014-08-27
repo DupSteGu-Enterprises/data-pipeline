@@ -2,6 +2,8 @@
 Provides system utilitie functions for the data pipeline project
 
 Current utilities available: test, which sets up and runs the test environment
+
+TODO: Replace this with paver
 """
 
 from mock import patch

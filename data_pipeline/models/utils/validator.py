@@ -16,9 +16,13 @@ class Validator(object):
     TODO: Create a way to log validation errors encountered. Maybe define a 
           class that is initialized with an error message?
     """
+    validations = {}
+    validation_errors = []  #TODO: Have a way of clearing this out if is_valid called mutliple times
+
     def __init__(self):
-        self.validations = {}
-        self.validation_errors = [] #TODO: Have a way of clearing this out if is_valid called mutliple times
+        # Need to look further into multiple inheritance - how to initialize
+        # validation_errors in here. Also, any way to make property private?
+        pass
 
     def is_valid(self):
         """
@@ -34,6 +38,7 @@ class Validator(object):
                 value = getattr(self, attribute)
             except AttributeError:
                 self.validation_errors.append('AttributeError: ' + attribute + ' is not defined.')
+                return False
 
             if not validation_fn(value):
                 self.validation_errors.append('ValidationFailure: ' + attribute + ' did not pass validation')
