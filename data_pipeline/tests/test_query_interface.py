@@ -16,6 +16,7 @@ class PoliticianDataStorageTests(unittest.TestCase):
 
     def tearDown(self):
         """ TODO: Clear out things added to database """
+        pass
 
     def test_storing_politician_no_contributions(self):
         """ Test storing a single politician into the db """

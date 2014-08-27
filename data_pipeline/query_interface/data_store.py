@@ -25,6 +25,7 @@ def store_politician(politician_data):
     TODO: Check if we've already encountered this politician - then how do we 
     respond? Assume we have new contributions/funders to add to its list?
     Also need to add validations
+    Figure out how to respond to multiple politicians with the same name
     """
     new_politician = Politician({'name': politician_data['name']})
     if 'contributions' in politician_data:
