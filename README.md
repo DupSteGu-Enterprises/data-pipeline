@@ -32,3 +32,4 @@ possible
 - Write tests for `Politician.get_total_contributions_for(...)`, I'm worried that the
 `politician.contributions` line will break, because of circular dependencies between the
 contributions and politicians models
+- Set up python linting (pylint, pep8) to clean up codebase
